@@ -4,6 +4,15 @@ window.onload = (ev) => {
     // @ts-ignore    
         window.mLoaded = true
         //mainEnt()
+        // @ts-ignore
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        }
     }
 }
 
