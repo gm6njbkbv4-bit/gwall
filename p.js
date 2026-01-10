@@ -5,13 +5,13 @@ window.onload = (ev) => {
         window.mLoaded = true
         //mainEnt()
         // @ts-ignore
-        MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']]
-            },
-            svg: {
-                fontCache: 'global'
-            }
+        if (window.MathJax && window.MathJax.tex) {
+            MathJax.tex = {
+                ...MathJax.tex,
+                inlineMath: [['$', '$']]
+            };
+            MathJax.startup.getComponents();
+            MathJax.typesetPromise();
         }
     }
 }
