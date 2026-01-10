@@ -5,17 +5,23 @@ window.onload = (ev) => {
         window.mLoaded = true
         //mainEnt()
         // @ts-ignore
-        if (window.MathJax && window.MathJax.tex) {
-            // @ts-ignore
-            window.MathJax = {
-                tex: {
-                    inlineMath: [['$', '$']]
-                }
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$']]
             }
         }
         const script = document.createElement('script')
         script.src = 'http://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js'
+        script.async = true
         document.head.appendChild(script)
+
+        script.onload = () => {
+            // @ts-ignore
+            if (window.MathJax) {
+                // @ts-ignore
+                window.MathJax.typesetPromise?.()
+            }
+        }
     }
 }
 
@@ -46,14 +52,6 @@ function mainEnt() {
             }
         }
     }
-
-    /*
-    // modify the post content area placeholder to let users know markdown is supported
-    if (window.location.href.includes('http://glbbq.online/post.php')) {
-        const contentArea = document.getElementById('content')
-        contentArea?.setAttribute('placeholder', '在这里写下你的表白内容, 支持 Markdown...')
-    }
-    */
 }
 
 mainEnt()
