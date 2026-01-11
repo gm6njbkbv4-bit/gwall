@@ -10,18 +10,23 @@ window.onload = (ev) => {
                 inlineMath: [['$', '$']]
             }
         }
-        const script = document.createElement('script')
-        script.src = 'http://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js'
-        script.async = true
-        document.head.appendChild(script)
+        const scriptMathjax = document.createElement('script')
+        scriptMathjax.src = 'http://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js'
+        scriptMathjax.async = true
+        document.head.appendChild(scriptMathjax)
 
-        script.onload = () => {
+        scriptMathjax.onload = () => {
             // @ts-ignore
             if (window.MathJax) {
                 // @ts-ignore
                 window.MathJax.typesetPromise?.()
             }
         }
+
+        const scriptMarked = document.createElement('script')
+        scriptMarked.src = 'http://cdn.jsdelivr.net/npm/marked/marked.min.js'
+        scriptMarked.async = true
+        document.head.appendChild(scriptMarked)
     }
 }
 
