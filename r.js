@@ -28,13 +28,15 @@ window.onload = (ev) => {
         scriptMarked.async = true
         document.head.appendChild(scriptMarked)
 
-        // parse Markdown
-        const postContainer = document.getElementsByClassName('posts-container')[0]
-        const postcards = postContainer?.getElementsByClassName('post-card')
-        if (postContainer && postcards) {
-            for (const postcard of postcards) {
-                for (const p of postcard.querySelectorAll('p')) {
-                    p.innerHTML = marked.parse(p.innerHTML, { async: false })
+        scriptMarked.onload = () => {
+            // parse Markdown
+            const postContainer = document.getElementsByClassName('posts-container')[0]
+            const postcards = postContainer?.getElementsByClassName('post-card')
+            if (postContainer && postcards) {
+                for (const postcard of postcards) {
+                    for (const p of postcard.querySelectorAll('p')) {
+                        p.innerHTML = marked.parse(p.innerHTML, { async: false })
+                    }
                 }
             }
         }
