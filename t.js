@@ -83,7 +83,8 @@ function mainEnt() {
                     pAuthorName.textContent?.includes('网友-28')) ||
                     atDelete.includes(pNumber.textContent || '')
                 ) {
-                    element.remove()
+                    //element.remove()
+                    element.outerHTML = ''
                 }
             }
         }, 20
